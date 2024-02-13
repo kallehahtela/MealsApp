@@ -6,8 +6,8 @@ import MealDetailsData from "../components/MealDetailsData";
 import Subtitle from "../components/MealDetail/Subtitle";
 import List from "../components/MealDetail/List";
 import IconButton from "../components/IconButton";
-
-
+import { FavoriteContext } from '../store/context/favorite-context';
+ 
 function MealDetails({ route, navigation }) {
     const favoriteMealsCtx = useContext(FavoriteContext);
 
@@ -27,7 +27,7 @@ function MealDetails({ route, navigation }) {
 
     useLayoutEffect(() => {
         navigation.setOptions({ headerRight: () => {
-            return <IconButton icon='heart-sharp' color={mealIsFavorite ? '#fff' : 'red'} onPress={changeFavoritesStatusHandler}/>
+            return <IconButton icon='heart-sharp' color={mealIsFavorite ? 'red' : 'white'} onPress={changeFavoritesStatusHandler}/>
         } });
     }, [navigation, changeFavoritesStatusHandler]);
 
