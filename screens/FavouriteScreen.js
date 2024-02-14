@@ -1,15 +1,16 @@
-import { useContext } from 'react';
+//import { useContext } from 'react';
+import { UseSelector, useSelector } from 'react-redux';
 import { StyleSheet, View, Text } from 'react-native';
 
-import MealsList from '../components/MealDetail/MealList/MealsList';
-import { FavoriteContext } from '../store/context/favorite-context';
 import { MEALS } from '../data/dummy-data';
-import { BorderlessButton } from 'react-native-gesture-handler';
+import MealsList from '../components/MealDetail/MealList/MealsList';
+//import { FavoriteContext } from '../store/context/favorite-context';
 
 function FavouriteScreen() {
-    const favoriteMealCtx = useContext(FavoriteContext);
+    // const favoriteMealCtx = useContext(FavoriteContext);
+    const favoriteMealIds = useSelector(state => state.favoriteMeals.ids);
 
-    const favoriteMeals = MEALS.filter(meal => favoriteMealCtx.ids.includes(meal.id));
+    const favoriteMeals = MEALS.filter(meal => favoriteMealIds.includes(meal.id));
 
     if (favoriteMeals.length === 0) {
         return (
